@@ -1,0 +1,24 @@
+/* .App {
+  text-align: center;
+}
+ */
+.accor{
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.div1{
+  max-width: 800px;
+  padding: 40px;
+  margin-top: 30px;
+  background-color:rgba(65, 73, 71, 0.63);
+  border-radius: 10px;
+}
+.back{
+    background-color:white;
+  background-position: center;
+  background-size:110vh;
+  background-repeat: no-repeat;
+  padding-top:24px;
+  padding-bottom:24px
+}
