@@ -13,6 +13,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
 import {FaHouseUser } from 'react-icons/fa';
+import UpdatePost from "./Pages/UpdatePost";
 // import { useNavigate } from "react-router-dom";
 function App() {
   const [auth, setAuth] = useState(false);
@@ -89,10 +90,11 @@ function App() {
             </Navbar>
           </div>
           <Routes>
-            <Route  path="/home" element={<Posts />} />
-            <Route path="/" exact element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/createpost" element={<CreatePost />} />
+            <Route  path="/home" element={auth === true ? <Posts /> : <Login/>} />
+            <Route path="/" exact element={auth === false ? <Login /> : <Posts/>} />
+            <Route path="/register" element={auth === false ? <Register /> : <Posts/>} />
+            <Route path="/createpost" element={auth === true ? <CreatePost /> : <Login/>} />
+            <Route path="/updatepost/:id" element={auth === true ? <UpdatePost /> : <Login/>} />
           </Routes>
         </Router>
       </AuthContext.Provider>

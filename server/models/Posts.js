@@ -2,20 +2,23 @@ module.exports = (sequelize, DataTypes) => {
     const Posts = sequelize.define("Posts", {
       title: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
         defaultValue: "name"
       },
       postText: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
         defaultValue: "name"
       },
       image: {
         type: DataTypes.STRING,
-        allowNull: true,
-        defaultValue: "name"
+        allowNull: false,
+
       },
-      
+      username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
     });
     
     Posts.associate = (models) => {

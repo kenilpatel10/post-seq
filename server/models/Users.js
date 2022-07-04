@@ -6,27 +6,30 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: "d"
       },
       password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(64),
         allowNull: true,
-        defaultValue: "d"
+        defaultValue: "d",
       },
       username: {
         type: DataTypes.STRING,
         allowNull: true,
-        defaultValue: "name"
+        defaultValue: "name",
+        unique: true
       },
 
     });
 
 
     Users.associate = (models) => {
-      Users.hasMany(models.Posts,{
-        onDelete: "cascade",
-      });
+
     
         Users.hasMany(models.Likes, {
           onDelete: "cascade",
         });
+        Users.hasMany(models.Comments, {
+          onDelete: "cascade",
+        });
+      
       
     };
     return Users;

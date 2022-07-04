@@ -18,12 +18,19 @@ router.post("/register", async (req, res) => {
     try {
 
         const user= await Users.findOne({where:{email: req.body.email}})
+        const user1= await Users.findOne({where:{username: req.body.username}})
+       if(user1){
+        res.status(401).json({
+          message: `Username Should be unique`,
+      })
+       }
 console.log(user)
 if(user){
     res.status(401).json({
         message: `User Already Exists`,
     })
-}else{
+}
+if(!user && !user1){
   bcrypt.hash(req.body.password,10).then((hash)=>{
  Users.create({
       username: req.body.username,
@@ -35,7 +42,6 @@ if(user){
       console.log("user",req.body);
     res.status(201).json({
       status: `Success 💥`,
-   
     });
 }
     

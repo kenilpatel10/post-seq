@@ -22,3 +22,8 @@
   padding-top:24px;
   padding-bottom:24px
 }
+.spinner{
+  position: fixed; 
+  top: 50%;
+  left: 45%;
+}

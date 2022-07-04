@@ -27,9 +27,16 @@ router.delete("/:commentId",validateToken,async (req, res) => {
 });
 router.post("/",validateToken, async (req, res) => {
   try {
-    const comment = req.body;
+    const {PostId} = req.body;
+    const UserId = req.user.id;
     const username = req.user.username
-    comment.username = username
+    const comment = {commentText:req.body.commentText,username:username, UserId: UserId , PostId: PostId}
+    // const UserId = req.user.id;
+   
+    // const comment = req.body;
+    // const username = req.user.username
+    // comment.username = username
+    // comment.UserId =UserId
     await Comments.create(comment);
     res.json(comment);
   } catch (error) {
